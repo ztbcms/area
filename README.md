@@ -31,7 +31,7 @@ handleChange(e) {
 引用php模板文件
 ```
 // 根据引用的文件，填写路径
-{include file="/components/address-cascader"}
+{include file="/components/address-cascader-muti"}
 
 //组件引用 
 <address-cascader-muti width="200px" size="medium" @change="handleMutiChange"></address-cascader-muti>
