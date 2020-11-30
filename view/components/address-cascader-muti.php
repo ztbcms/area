@@ -95,7 +95,7 @@
                     this.handleChange(this.value);
                 },
                 getAreaTree() {
-                    this.httpGet("{:urlx('area/api/getAreaTree')}", {}, (res) => {
+                    this.httpGet("{:api_url('/area/api/getAreaTree')}", {}, (res) => {
                         if (res.status) {
                             this.options = res.data;
                             this.defaultData();
