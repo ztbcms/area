@@ -2,8 +2,9 @@
 
 #### 行政地区
 ##### 单选
+
 引用php模板文件
-```
+```html
 // 根据引用的文件，填写路径
 {include file="/components/address-cascader"}
 
@@ -21,8 +22,8 @@
 
 事件
 
-```
-handleChange(e) {
+```js
+handleChange: function(e) {
   // {"code":[120000,120100,120103],"name":["天津市","天津市","河西区"]}
   console.log(e);
 }
@@ -31,7 +32,7 @@ handleChange(e) {
 ##### 多选
 
 引用php模板文件
-```
+```html
 // 根据引用的文件，填写路径
 {include file="/components/address-cascader-muti"}
 
@@ -49,8 +50,8 @@ handleChange(e) {
 
 事件
 
-```
-handleMutiChange(e) {
+```js
+handleMutiChange: function(e) {
   //[{"code":[110000,110100,110101],"label":["北京市","北京市","东城区"]},{"code":[110000,110100,110102],"label":["北京市","北京市","西城区"]}]
   console.log(e);
 }
