@@ -34,7 +34,7 @@
     $(function () {
         new Vue({
             el: "#app",
-            data() {
+            data: function() {
                 return {
                     valueType: 'area_name',
                     value: [],
@@ -42,15 +42,15 @@
                     result: ""
                 };
             },
-            mounted() {
+            mounted: function() {
             },
             methods: {
-                handleMutiChange(e) {
+                handleMutiChange: function(e) {
                     //[{"code":[110000,110100,110101],"label":["北京市","北京市","东城区"]},{"code":[110000,110100,110102],"label":["北京市","北京市","西城区"]}]
                     console.log(e);
                     this.result = JSON.stringify(e)
                 },
-                handleChange(e) {
+                handleChange: function(e) {
                     // {"code":[120000,120100,120103],"name":["天津市","天津市","河西区"]}
                     console.log(e);
                     this.result = JSON.stringify(e)

@@ -20,7 +20,7 @@
             props: {
                 default: {
                     type: Array,
-                    defalut() {
+                    defalut: function() {
                         return [];
                     }
                 },
@@ -38,12 +38,12 @@
                 }
             },
             watch: {
-                type(type) {
+                type: function() {
                     this.defaultData();
                 }
             },
             template: '#address-cascader',
-            data() {
+            data: function() {
                 return {
                     value: [],
                     propsData: {
@@ -54,36 +54,36 @@
                     options: []
                 }
             },
-            mounted() {
+            mounted: function() {
                 this.getAreaTree();
             },
             methods: {
-                defaultData() {
-                    let defaultValue = this.default;
+                defaultData: function() {
+                    var defaultValue = this.default;
                     if (defaultValue && this.type === 'area_name') {
                         if (defaultValue.length === 3) {
-                            let item1 = this.options.find(res => {
+                            var item1 = this.options.find(function(res) {
                                 return defaultValue[0] === res.area_name;
                             });
                             if (!item1) {
                                 this.value = [];
                                 return
                             }
-                            let item2 = item1.children.find(res => {
+                            var item2 = item1.children.find(res => {
                                 return defaultValue[1] === res.area_name;
                             });
                             if (!item2) {
                                 this.value = [];
                                 return
                             }
-                            let item3 = item2.children.find(res => {
+                            var item3 = item2.children.find(res => {
                                 return defaultValue[2] === res.area_name;
                             });
                             if (!item3) {
                                 this.value = [];
                                 return
                             }
-                            let code = [item1.code, item2.code, item3.code];
+                            var code = [item1.code, item2.code, item3.code];
                             console.log('code', code);
                             this.value = code;
                         }
@@ -92,38 +92,39 @@
                     }
                     this.handleChange(this.value);
                 },
-                getAreaTree() {
-                    this.httpGet("{:api_url('/area/api/getAreaTree')}", {}, (res) => {
+                getAreaTree: function() {
+                    var that = this
+                    this.httpGet("{:api_url('/area/api/getAreaTree')}", {}, function(res){
                         if (res.status) {
-                            this.options = res.data;
-                            this.defaultData();
+                            that.options = res.data;
+                            that.defaultData();
                         }
                     })
                 },
-                handleChange(code) {
+                handleChange: function(code) {
                     if (code.length === 3) {
-                        let item1 = this.options.find(res => {
+                        var item1 = this.options.find(function(res) {
                             return parseInt(code[0]) === parseInt(res.code);
                         });
                         if (!item1) {
                             return
                         }
-                        let item2 = item1.children.find(res => {
+                        var item2 = item1.children.find(function (res) {
                             return parseInt(code[1]) === parseInt(res.code);
                         });
                         if (!item2) {
                             return
                         }
-                        let item3 = item2.children.find(res => {
+                        var item3 = item2.children.find(function (res) {
                             return parseInt(code[2]) === parseInt(res.code);
                         });
                         if (!item3) {
                             return
                         }
-                        let name = [item1.area_name, item2.area_name, item3.area_name];
-                        this.$emit('change', {code, name})
+                        var name = [item1.area_name, item2.area_name, item3.area_name];
+                        this.$emit('change', {code: code, name: name})
                     } else {
-                        this.$emit('change', {code, name: []})
+                        this.$emit('change', {code: code, name: []})
                     }
 
                 }
