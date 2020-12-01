@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS `cms_tp6_area`;
+DROP TABLE IF EXISTS `cms_area_area`;

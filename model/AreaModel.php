@@ -12,7 +12,7 @@ use Think\Model;
 
 class AreaModel extends Model
 {
-    protected $name = 'tp6_area';
+    protected $name = 'area_area';
 
     /**
      * 获取下级

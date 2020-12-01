@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS `cms_tp6_area`;
-CREATE TABLE `cms_tp6_area` (
+DROP TABLE IF EXISTS `cms_area_area`;
+CREATE TABLE `cms_area_area` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `shortname` varchar(100) DEFAULT '' COMMENT '简称',
   `area_name` varchar(100) DEFAULT '' COMMENT '名称',
@@ -11,10 +11,10 @@ CREATE TABLE `cms_tp6_area` (
   `lat` varchar(100) DEFAULT '' COMMENT '纬度',
   PRIMARY KEY (`id`),
   KEY `code` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=3870 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-INSERT INTO `cms_tp6_area` (`id`, `shortname`, `area_name`, `whole_name`, `level`, `code`, `pcode`, `lng`, `lat`)
+INSERT INTO `cms_area_area` (`id`, `shortname`, `area_name`, `whole_name`, `level`, `code`, `pcode`, `lng`, `lat`)
 VALUES
 	(1, '北京', '北京市', '中国,北京', 1, 110000, 0, '116.405285', '39.904989'),
 	(2, '北京', '北京市', '中国,北京,北京市', 2, 110100, 110000, '116.405285', '39.904989'),
@@ -2933,7 +2933,7 @@ VALUES
 	(2915, '巍山', '巍山彝族回族自治县', '中国,云南省,大理白族自治州,巍山彝族回族自治县', 3, 532927, 532900, '100.30612', '25.23197'),
 	(2916, '永平', '永平县', '中国,云南省,大理白族自治州,永平县', 3, 532928, 532900, '99.54095', '25.46451');
 
-INSERT INTO `cms_tp6_area` (`id`, `shortname`, `area_name`, `whole_name`, `level`, `code`, `pcode`, `lng`, `lat`)
+INSERT INTO `cms_area_area` (`id`, `shortname`, `area_name`, `whole_name`, `level`, `code`, `pcode`, `lng`, `lat`)
 VALUES
 	(2917, '云龙', '云龙县', '中国,云南省,大理白族自治州,云龙县', 3, 532929, 532900, '99.37255', '25.88505'),
 	(2918, '洱源', '洱源县', '中国,云南省,大理白族自治州,洱源县', 3, 532930, 532900, '99.94903', '26.10829'),
