@@ -23,7 +23,6 @@ class Api extends BaseController
     function getAreaTree()
     {
         $cache_key = __CLASS__.__METHOD__;
-        var_dump($cache_key);
         $res = Cache::get($cache_key);
         if ($res) {
             return json(self::createReturn(true, $res));
