@@ -1,5 +1,5 @@
 <div>
-    <div id="app">
+    <div id="app" v-cloak>
         <el-card>
             <h3>地址选择</h3>
             <el-form :inline="true">
