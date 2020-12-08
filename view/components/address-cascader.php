@@ -1,17 +1,15 @@
 <script type="text/x-template" id="address-cascader">
-    <div>
-        <div class="block">
-            <el-cascader
-                    :style="{'width':width}"
-                    clearable
-                    :size="size"
-                    :value="value"
-                    :options="options"
-                    filterable
-                    :props="propsData"
-                    @change="handleChange">
-            </el-cascader>
-        </div>
+    <div class="area-address-cascader">
+        <el-cascader
+                :style="{'width':width}"
+                clearable
+                :size="size"
+                :value="value"
+                :options="options"
+                filterable
+                :props="propsData"
+                @change="handleChange">
+        </el-cascader>
     </div>
 </script>
 <script>

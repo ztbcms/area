@@ -1,18 +1,16 @@
 <script type="text/x-template" id="address-cascader-muti">
-    <div>
-        <div class="block">
-            <el-cascader
-                    :style="{'width':width}"
-                    collapse-tags
-                    clearable
-                    :size="size"
-                    :value="value"
-                    :options="options"
-                    filterable
-                    :props="propsData"
-                    @change="handleChange">
-            </el-cascader>
-        </div>
+    <div class="area-address-cascader-muti">
+        <el-cascader
+                :style="{'width':width}"
+                collapse-tags
+                clearable
+                :size="size"
+                :value="value"
+                :options="options"
+                filterable
+                :props="propsData"
+                @change="handleChange">
+        </el-cascader>
     </div>
 </script>
 <script>
