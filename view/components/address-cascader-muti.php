@@ -16,10 +16,11 @@
 <script>
     $(function () {
         Vue.component('address-cascader-muti', {
+            template: '#address-cascader-muti',
             props: {
                 default: {
                     type: Array,
-                    defalut: function() {
+                    defalut: function () {
                         return [];
                     }
                 },
@@ -36,40 +37,40 @@
                     default: "300px"
                 }
             },
-            template: '#address-cascader-muti',
+
             watch: {
-                type: function() {
+                type: function () {
                     this.defaultData();
                 }
             },
-            data: function() {
+            data: function () {
                 return {
                     propsData: {expandTrigger: 'hover', multiple: true, value: 'code', label: 'area_name'},
                     value: [],
                     options: []
                 }
             },
-            mounted: function() {
+            mounted: function () {
                 this.getAreaTree();
             },
             methods: {
-                getValue: function(defaultValue) {
+                getValue: function (defaultValue) {
                     if (defaultValue.length === 3) {
-                        var item1 = this.options.find(res => {
+                        var item1 = this.options.find(function (res) {
                             return defaultValue[0] === res.area_name;
                         });
                         if (!item1) {
                             this.value = [];
                             return
                         }
-                        var item2 = item1.children.find(res => {
+                        var item2 = item1.children.find(function (res) {
                             return defaultValue[1] === res.area_name;
                         });
                         if (!item2) {
                             this.value = [];
                             return
                         }
-                        var item3 = item2.children.find(res => {
+                        var item3 = item2.children.find(function (res) {
                             return defaultValue[2] === res.area_name;
                         });
                         if (!item3) {
@@ -79,12 +80,12 @@
                         return [item1.code, item2.code, item3.code];
                     }
                 },
-                defaultData: function() {
+                defaultData: function () {
                     var that = this
                     var defaultValues = this.default;
                     if (defaultValues && this.type === 'area_name') {
                         var codes = [];
-                        defaultValues.forEach(function(defaultValue) {
+                        defaultValues.forEach(function (defaultValue) {
                             codes.push(that.getValue(defaultValue));
                         });
                         this.value = codes;
@@ -93,30 +94,30 @@
                     }
                     this.handleChange(this.value);
                 },
-                getAreaTree: function() {
+                getAreaTree: function () {
                     var that = this
-                    this.httpGet("{:api_url('/area/api/getAreaTree')}", {}, function(res) {
+                    this.httpGet("{:api_url('/area/api/getAreaTree')}", {}, function (res) {
                         if (res.status) {
                             that.options = res.data;
                             that.defaultData();
                         }
                     })
                 },
-                getLabel: function(code) {
+                getLabel: function (code) {
                     if (code.length === 3) {
-                        var item1 = this.options.find(res => {
+                        var item1 = this.options.find(function (res) {
                             return parseInt(code[0]) === parseInt(res.code);
                         });
                         if (!item1) {
                             return
                         }
-                        var item2 = item1.children.find(res => {
+                        var item2 = item1.children.find(function (res) {
                             return parseInt(code[1]) === parseInt(res.code);
                         });
                         if (!item2) {
                             return
                         }
-                        var item3 = item2.children.find(res => {
+                        var item3 = item2.children.find(function (res) {
                             return parseInt(code[2]) === parseInt(res.code);
                         });
                         if (!item3) {
@@ -127,10 +128,10 @@
                         return {code: [], detail: []};
                     }
                 },
-                handleChange: function(codes) {
+                handleChange: function (codes) {
                     var that = this
                     var a = [];
-                    codes.forEach(function(code) {
+                    codes.forEach(function (code) {
                         a.push({
                             code: code,
                             label: that.getLabel(code)

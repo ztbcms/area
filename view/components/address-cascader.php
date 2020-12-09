@@ -15,10 +15,11 @@
 <script>
     $(function () {
         Vue.component('address-cascader', {
+            template: '#address-cascader',
             props: {
                 default: {
                     type: Array,
-                    defalut: function() {
+                    defalut: function () {
                         return [];
                     }
                 },
@@ -36,12 +37,11 @@
                 }
             },
             watch: {
-                type: function() {
+                type: function () {
                     this.defaultData();
                 }
             },
-            template: '#address-cascader',
-            data: function() {
+            data: function () {
                 return {
                     value: [],
                     propsData: {
@@ -52,29 +52,29 @@
                     options: []
                 }
             },
-            mounted: function() {
+            mounted: function () {
                 this.getAreaTree();
             },
             methods: {
-                defaultData: function() {
+                defaultData: function () {
                     var defaultValue = this.default;
                     if (defaultValue && this.type === 'area_name') {
                         if (defaultValue.length === 3) {
-                            var item1 = this.options.find(function(res) {
+                            var item1 = this.options.find(function (res) {
                                 return defaultValue[0] === res.area_name;
                             });
                             if (!item1) {
                                 this.value = [];
                                 return
                             }
-                            var item2 = item1.children.find(res => {
+                            var item2 = item1.children.find(function (res) {
                                 return defaultValue[1] === res.area_name;
                             });
                             if (!item2) {
                                 this.value = [];
                                 return
                             }
-                            var item3 = item2.children.find(res => {
+                            var item3 = item2.children.find(function (res) {
                                 return defaultValue[2] === res.area_name;
                             });
                             if (!item3) {
@@ -90,18 +90,18 @@
                     }
                     this.handleChange(this.value);
                 },
-                getAreaTree: function() {
+                getAreaTree: function () {
                     var that = this
-                    this.httpGet("{:api_url('/area/api/getAreaTree')}", {}, function(res){
+                    this.httpGet("{:api_url('/area/api/getAreaTree')}", {}, function (res) {
                         if (res.status) {
                             that.options = res.data;
                             that.defaultData();
                         }
                     })
                 },
-                handleChange: function(code) {
+                handleChange: function (code) {
                     if (code.length === 3) {
-                        var item1 = this.options.find(function(res) {
+                        var item1 = this.options.find(function (res) {
                             return parseInt(code[0]) === parseInt(res.code);
                         });
                         if (!item1) {
@@ -124,7 +124,6 @@
                     } else {
                         this.$emit('change', {code: code, name: []})
                     }
-
                 }
             }
         });
