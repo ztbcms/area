@@ -20,17 +20,17 @@
             props: {
                 default: {
                     type: Array,
-                    defalut: function () {
+                    default: function () {
                         return [];
                     }
                 },
                 type: {
                     type: String,
-                    defalut: "code"
+                    default: "code"
                 },
                 size: {
                     type: String,
-                    defalut: "small"
+                    default: "small"
                 },
                 width: {
                     type: String,
