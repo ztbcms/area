@@ -57,12 +57,12 @@
     </div>
 </script>
 <!-- 注意 KEY 的取值  -->
-<script charset="utf-8" src="https://map.qq.com/api/gljs?v=1.exp&key=WVABZ-QNQ3G-C5AQZ-IHOFB-O5GM3-*****"></script>
+
+<?php $qqmap_key = \app\area\service\AreaToolService::QQMAP_KEY; ?>
+<script charset="utf-8" src="https://map.qq.com/api/gljs?v=1.exp&key={$qqmap_key}"></script>
 <script>
     var map
     var marker
-    // 注意 KEY 的取值
-    const key = "WVABZ-QNQ3G-C5AQZ-IHOFB-O5GM3-*****"
     $(function () {
         Vue.component('get-location', {
             template: '#get-location',
@@ -84,6 +84,7 @@
             },
             data: function () {
                 return {
+                    key: "{$qqmap_key}",
                     keyword: "",
                     city: "",
                     address_list: [],
@@ -170,7 +171,7 @@
                         this.$message.error('请输入关键词')
                         return
                     }
-                    var url = "https://apis.map.qq.com/ws/place/v1/search?callback=?&output=jsonp&keyword=" + encodeURIComponent(this.keyword) + "&boundary=region(" + this.city + ",0)&key=" + key
+                    var url = "https://apis.map.qq.com/ws/place/v1/search?callback=?&output=jsonp&keyword=" + encodeURIComponent(this.keyword) + "&boundary=region(" + this.city + ",0)&key=" + this.key
                     $.getJSON(url, function (res) {
                         console.log('res', res)
                         if (res.status === 0) {
