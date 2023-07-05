@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
  * User: zhlhuang
- * Date: 2020-09-19
- * Time: 09:56.
  */
 
 namespace app\area\model;
@@ -20,6 +17,6 @@ class AreaModel extends Model
      */
     public function children()
     {
-        return $this->hasMany(self::class, 'pcode', 'code')->field(['area_name', 'code', 'pcode']);
+        return $this->hasMany(AreaModel::class, 'pcode', 'code')->field(['area_name', 'code', 'pcode']);
     }
 }
